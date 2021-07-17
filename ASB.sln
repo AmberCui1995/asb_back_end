@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASB", "ASB.csproj", "{99208925-9ED7-44AD-8226-17F1BBD2CB71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASBTests", "..\ASBTests\ASBTests.csproj", "{8E6D4460-421B-4BCD-867D-E43C8833D771}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASBIntegrationTests", "..\ASBIntegrationTests\ASBIntegrationTests.csproj", "{BDA3DD81-5AB6-4BA7-9692-9AAD52CE14D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{99208925-9ED7-44AD-8226-17F1BBD2CB71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99208925-9ED7-44AD-8226-17F1BBD2CB71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99208925-9ED7-44AD-8226-17F1BBD2CB71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E6D4460-421B-4BCD-867D-E43C8833D771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E6D4460-421B-4BCD-867D-E43C8833D771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E6D4460-421B-4BCD-867D-E43C8833D771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E6D4460-421B-4BCD-867D-E43C8833D771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDA3DD81-5AB6-4BA7-9692-9AAD52CE14D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDA3DD81-5AB6-4BA7-9692-9AAD52CE14D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA3DD81-5AB6-4BA7-9692-9AAD52CE14D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDA3DD81-5AB6-4BA7-9692-9AAD52CE14D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

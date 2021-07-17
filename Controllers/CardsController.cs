@@ -45,11 +45,6 @@ namespace ASB.Controllers
         [HttpPost]
         public async Task<ActionResult<UserCard>> CreateCard(UserCard card)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-
             var validCard = _cardService.GetValidCard(card.CardNumber);
             if (validCard == null)
             {
