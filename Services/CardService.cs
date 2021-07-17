@@ -1,9 +1,18 @@
-namespace ASB.Services {
+using ASB.Models;
+using System;
+using System.Collections.Generic;
+namespace ASB.Services
 
-public  class CardService
+{
+
+    public class CardService: ICardService
     {
-        CardService()
+        public CardService()
         {
+        }
+
+        public IEnumerable<Card> GetAllCards(){
+            throw new NotImplementedException();
         }
     }
 
