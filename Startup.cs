@@ -1,4 +1,6 @@
+
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ASB.Services;
+using JsonFlatFileDataStore;
 
 namespace ASB
 {
@@ -26,8 +29,11 @@ namespace ASB
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            var jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), Configuration["DataStore:FileName"]);
+            services.AddSingleton<IDataStore>(new DataStore(jsonFilePath, keyProperty: Configuration["DataStore:IdField"]));
             services.AddSingleton<ICardService, CardService>();
+            services.AddControllers();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

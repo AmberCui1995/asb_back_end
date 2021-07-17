@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ASB.Models;
 using ASB.Services;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace ASB.Controllers
 {
@@ -24,23 +25,32 @@ namespace ASB.Controllers
             _cardService = cardService;
         }
 
-        [HttpGet]
+        [HttpGet()]
         public ActionResult<IEnumerable<Card>> GetAllCards()
         {
-            return Ok(_cardService.GetAllCards().ToList());
+            return Ok(_cardService.GetAllCards());
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Card> GetCardWithId(int id)
+        public ActionResult<Card> GetCardWithId(string id)
         {
-            throw new NotImplementedException();
-            
+            var result = _cardService.GetCardWithId(id);
+            if (result == null)
+            {
+                return NotFound();
+            } 
+            return Ok(result);
         }
 
         [HttpPost]
-        public IActionResult CreateCard(Card card)
+        public async Task<ActionResult<Card>> CreateCard(Card card)
         {
-            throw new NotImplementedException();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            await _cardService.CreateCard(card);
+            return Ok();
         }
     }
 }
