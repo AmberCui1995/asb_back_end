@@ -10,17 +10,34 @@ namespace ASB.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CardController : ControllerBase
+    public class CardsController : ControllerBase
     {
 
-        private readonly ILogger<CardController> _logger;
+        private readonly ILogger<CardsController> _logger;
 
-        public CardController(ILogger<CardController> logger)
+        public CardsController(ILogger<CardsController> logger)
         {
             _logger = logger;
+            Console.WriteLine("Card Controller");
         }
 
         [HttpGet]
-        public ActionResult<List<Card>> GetAll() => new List<Card>();
+        public ActionResult<List<Card>> GetAllCards()
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Card> GetCardWithId(int id)
+        {
+            throw new NotImplementedException();
+            
+        }
+
+        [HttpPost]
+        public IActionResult CreateCard(Card card)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
