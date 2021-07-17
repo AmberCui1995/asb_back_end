@@ -20,24 +20,31 @@ namespace ASB.Services
             _dataStore = dataStore;
         }
 
-        public IEnumerable<Card> GetAllCards()
+        public IEnumerable<UserCard> GetAllUserCard()
         {
-            var collection = _dataStore.GetCollection<Card>();
+            var collection = _dataStore.GetCollection<UserCard>();
             return collection.AsQueryable();
         }
 
-        public Card GetCardWithId(string id)
+        public UserCard GetUserCardWithId(string id)
         {
-            var collection = _dataStore.GetCollection<Card>();
+            var collection = _dataStore.GetCollection<UserCard>();
             return collection
                     .AsQueryable()
                     .FirstOrDefault(p => p.ID == id);
         }
+        public ValidCard GetValidCard(long cardNumber)
+        {
+            var collection = _dataStore.GetCollection<ValidCard>();
+            return collection
+                    .AsQueryable()
+                    .FirstOrDefault(p => p.CardNumber == cardNumber);
+        }
 
-        public async Task CreateCard(Card card)
+        public async Task CreateUserCard(UserCard card)
         {
             card.ID = Guid.NewGuid().ToString();
-            var collection = _dataStore.GetCollection<Card>();
+            var collection = _dataStore.GetCollection<UserCard>();
             await collection.InsertOneAsync(card);
         }
     }

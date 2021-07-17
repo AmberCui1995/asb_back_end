@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ASB.Models
 {
-    public class Card
+    public class UserCard
     {
         public string ID { get; set; }
 

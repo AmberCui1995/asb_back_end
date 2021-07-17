@@ -26,15 +26,15 @@ namespace ASB.Controllers
         }
 
         [HttpGet()]
-        public ActionResult<IEnumerable<Card>> GetAllCards()
+        public ActionResult<IEnumerable<UserCard>> GetAllCards()
         {
-            return Ok(_cardService.GetAllCards());
+            return Ok(_cardService.GetAllUserCard());
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Card> GetCardWithId(string id)
+        public ActionResult<UserCard> GetCardWithId(string id)
         {
-            var result = _cardService.GetCardWithId(id);
+            var result = _cardService.GetUserCardWithId(id);
             if (result == null)
             {
                 return NotFound();
@@ -43,13 +43,20 @@ namespace ASB.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Card>> CreateCard(Card card)
+        public async Task<ActionResult<UserCard>> CreateCard(UserCard card)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-            await _cardService.CreateCard(card);
+
+            var validCard = _cardService.GetValidCard(card.CardNumber);
+            if (validCard == null)
+            {
+                return BadRequest();
+            }
+
+            await _cardService.CreateUserCard(card);
             return Ok();
         }
     }

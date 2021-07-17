@@ -8,8 +8,9 @@ namespace ASB.Services
 {
     public interface ICardService
     {
-        IEnumerable<Card> GetAllCards();
-        Card GetCardWithId(string id);
-        Task CreateCard(Card card);
+        IEnumerable<UserCard> GetAllUserCard();
+        UserCard GetUserCardWithId(string id);
+        ValidCard GetValidCard(long cardNumber);
+        Task CreateUserCard(UserCard card);
     }
 }
